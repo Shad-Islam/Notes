@@ -36,13 +36,13 @@ function BioData(props) {
   return (
     <>
       <h1>Bio Data of Shad</h1>
-      <p>Name:</p>
-      <p>Age:</p>
-      <p>Gender:</p>
-      <p>Email:</p>
-      <p>Phone:</p>
-      <p>Address:</p>
-      <p>Country:</p>
+      <p>Name: {props.name}</p>
+      <p>Age: {props.age}</p>
+      <p>Gender: {props.gender}</p>
+      <p>Email: {props.email}</p>
+      <p>Phone: {props.phone}</p>
+      <p>Address: {props.address}</p>
+      <p>Country: {props.country}</p>
     </>
   );
 }
