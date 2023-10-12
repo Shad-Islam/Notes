@@ -16,11 +16,19 @@ function Counter() {
   return (
     <div className="counter">
       <h1>The current value of counter is {dynamicCounter}</h1>
-      <button onClick={() => increaseHandler(1)}>Increase by 1</button>
-      <button onClick={() => decreaseHandler(1)}>decrease by 1</button>
+      <button onClick={() => increaseHandler(1)} className="counter__btn">
+        Increase by 1
+      </button>
+      <button onClick={() => decreaseHandler(1)} className="counter__btn">
+        decrease by 1
+      </button>
 
-      <button onClick={() => increaseHandler(5)}>Increase by 5</button>
-      <button onClick={() => decreaseHandler(5)}>decrease by 5</button>
+      <button onClick={() => increaseHandler(5)} className="counter__btn">
+        Increase by 5
+      </button>
+      <button onClick={() => decreaseHandler(5)} className="counter__btn">
+        decrease by 5
+      </button>
     </div>
   );
 }
