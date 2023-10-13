@@ -4,8 +4,9 @@ import { useState } from "react";
 function App() {
   const [noteTitle, setNotetitle] = useState("");
   const [notes, setNotes] = useState([]);
+  const [edit, setEdit] = useState(false);
 
-  // create button
+  // create handler
   const createHandler = (event) => {
     event.preventDefault();
     if (!noteTitle) {
@@ -24,9 +25,20 @@ function App() {
     const newNotes = notes.filter((note) => note.id !== noteId);
     setNotes(newNotes);
   };
+
+  // edit button
+  const editHandler = (note) => {
+    setEdit(true);
+    setNotetitle(note.title);
+  };
+
+  const updateHandler = (event) => {
+    event.preventDefault();
+  };
+
   return (
     <>
-      <form onSubmit={createHandler}>
+      <form onSubmit={edit ? updateHandler : createHandler}>
         <input
           type="text"
           value={noteTitle}
@@ -35,13 +47,19 @@ function App() {
           }}
         />
 
-        <button type="submit">Add Note</button>
+        <button type="submit">{edit ? "Update Note" : "Add Note"}</button>
       </form>
       <ul className="note-list">
         {notes.map((note) => (
           <li key={note.id}>
             <span>{note.title}</span>
-            <button>Edit</button>
+            <button
+              onClick={() => {
+                editHandler(note);
+              }}
+            >
+              Edit
+            </button>
             <button
               onClick={() => {
                 removeHandler(note.id);
