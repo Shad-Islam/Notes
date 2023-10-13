@@ -10,13 +10,17 @@ function App() {
 
   const createHandler = (event) => {
     event.preventDefault();
+    if (!noteTitle) {
+      return alert("Please Enter Note Title");
+    }
     const newNote = {
       id: Date.now + "",
       title: noteTitle,
     };
     setNotes([...notes, newNote]);
+    setNotetitle("");
   };
-  
+
   const removeHandler = () => {};
   return (
     <>
