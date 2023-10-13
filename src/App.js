@@ -5,6 +5,7 @@ function App() {
   const [noteTitle, setNotetitle] = useState("");
   const [notes, setNotes] = useState([]);
   const [edit, setEdit] = useState(false);
+  const [update, setUpdate] = useState(null);
 
   // create handler
   const createHandler = (event) => {
@@ -30,10 +31,20 @@ function App() {
   const editHandler = (note) => {
     setEdit(true);
     setNotetitle(note.title);
+    setUpdate(note);
   };
 
   const updateHandler = (event) => {
     event.preventDefault();
+    const updatedNoteArray = notes.map((note) => {
+      if (note.id === update.id) {
+        return { ...note, title: noteTitle };
+      } else {
+        return note;
+      }
+    });
+    setNotes(updatedNoteArray);
+    setNotetitle("");
   };
 
   return (
