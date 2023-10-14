@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
-<<<<<<< HEAD
+
 
 /* custome css */
 .counter{
@@ -45,7 +45,7 @@
 
 .counter__btn{
   margin-right: 20px;
-=======
+}
 /* custome css */
 body{
   min-height: 100vh;
@@ -113,5 +113,10 @@ body{
   border: none;
   cursor: pointer;
   background: none;
->>>>>>> e23b86f (Add style)
+  color:darkgray;
+  transition: all linear 0.5s;
+}
+
+.note-btn button:hover{ 
+  color: #000;
 }
