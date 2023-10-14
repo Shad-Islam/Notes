@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+/* custome css */
+.counter{
+  text-align: center;
+}
+
+.counter__btn{
+  margin-right: 20px;
+}
