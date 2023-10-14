@@ -45,6 +45,7 @@ function App() {
     });
     setNotes(updatedNoteArray);
     setNotetitle("");
+    setEdit(false);
   };
 
   return (
