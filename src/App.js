@@ -48,40 +48,45 @@ function App() {
   };
 
   return (
-    <>
-      <form onSubmit={edit ? updateHandler : createHandler}>
+    <div className="container">
+      <form onSubmit={edit ? updateHandler : createHandler} className="form">
         <input
           type="text"
+          className="input-field"
           value={noteTitle}
           onChange={(event) => {
             setNotetitle(event.target.value);
           }}
         />
 
-        <button type="submit">{edit ? "Update Note" : "Add Note"}</button>
+        <button type="submit" className="submit-btn">
+          {edit ? "Update Note" : "Add Note"}
+        </button>
       </form>
       <ul className="note-list">
         {notes.map((note) => (
-          <li key={note.id}>
+          <li key={note.id} className="note-box">
             <span>{note.title}</span>
-            <button
-              onClick={() => {
-                editHandler(note);
-              }}
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => {
-                removeHandler(note.id);
-              }}
-            >
-              Remove
-            </button>
+            <div className="note-btn">
+              <button
+                onClick={() => {
+                  editHandler(note);
+                }}
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => {
+                  removeHandler(note.id);
+                }}
+              >
+                Remove
+              </button>
+            </div>
           </li>
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
