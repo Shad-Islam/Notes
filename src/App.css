@@ -111,6 +111,7 @@ body{
 
 .note-btn button{
   border: none;
+  cursor: pointer;
   background: none;
 >>>>>>> e23b86f (Add style)
 }
