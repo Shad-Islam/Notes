@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState } from "react";
+import Counter from "./components/Counter";
 
 function App() {
   const [noteTitle, setNotetitle] = useState("");
@@ -90,5 +91,14 @@ function App() {
     </div>
   );
 }
+
+/////////// show another output ///////////////
+
+//   return (
+//     <>
+//       <Counter />
+//     </>
+//   );
+// }
 
 export default App;
