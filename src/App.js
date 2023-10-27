@@ -1,7 +1,6 @@
 import "./App.css";
 import { useState } from "react";
 
-
 function App() {
   const [noteTitle, setNotetitle] = useState("");
   const [notes, setNotes] = useState([]);
@@ -62,7 +61,8 @@ function App() {
         />
 
         <button type="submit" className="submit-btn">
-          {edit ? "Update Note" : "Add Note"}
+          {/* {edit ? "Update Note" : "Add Note"} */}
+          {edit ? "Update Note" : "Add"}
         </button>
       </form>
       <ul className="note-list">
