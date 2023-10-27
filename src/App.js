@@ -61,8 +61,7 @@ function App() {
         />
 
         <button type="submit" className="submit-btn">
-          {/* {edit ? "Update Note" : "Add Note"} */}
-          {edit ? "Update Note" : "Add"}
+          {edit ? "Update Note" : "Add Note"}
         </button>
       </form>
       <ul className="note-list">
