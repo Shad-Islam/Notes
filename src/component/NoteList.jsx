@@ -4,20 +4,7 @@ import { NoteContext } from "../context/NoteProvider";
 
 function NoteList() {
   const NoteContextvalue = useContext(NoteContext);
-  //remove button
-  const removeHandler = (noteId) => {
-    const newNotes = NoteContextvalue.notes.filter(
-      (note) => note.id !== noteId
-    );
-    NoteContextvalue.setNotes(newNotes);
-  };
 
-  // edit button
-  const editHandler = (note) => {
-    NoteContextvalue.setEdit(true);
-    NoteContextvalue.setNotetitle(note.title);
-    NoteContextvalue.setUpdate(note);
-  };
   return (
     <>
       <ul className="note-list">
@@ -27,14 +14,14 @@ function NoteList() {
             <div className="note-btn">
               <button
                 onClick={() => {
-                  editHandler(note);
+                  NoteContextvalue.editHandler(note);
                 }}
               >
                 Edit
               </button>
               <button
                 onClick={() => {
-                  removeHandler(note.id);
+                  NoteContextvalue.removeHandler(note.id);
                 }}
               >
                 Remove
