@@ -10,7 +10,7 @@ function NoteProvider({ children }) {
   const [edit, setEdit] = useState(false);
   const [update, setUpdate] = useState(null);
 
-  const NoteContextValue = {
+  const contextValue = {
     edit,
     notes,
     update,
@@ -22,7 +22,7 @@ function NoteProvider({ children }) {
   };
   return (
     <div>
-      <NoteContext.Provider value={NoteContextValue}>
+      <NoteContext.Provider value={contextValue}>
         {children}
       </NoteContext.Provider>
     </div>

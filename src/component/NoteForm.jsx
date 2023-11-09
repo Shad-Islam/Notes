@@ -1,50 +1,54 @@
 import React from "react";
+import { useContext } from "react";
+import { NoteContext } from "../context/NoteProvider";
 
-function NoteForm(props) {
+function NoteForm() {
+  const NoteContextvalue = useContext(NoteContext);
+
   // create handler
   const createHandler = (event) => {
     event.preventDefault();
-    if (!props.noteTitle) {
+    if (!NoteContextvalue.noteTitle) {
       return alert("Please Enter Note Title");
     }
     const newNote = {
       id: Date.now() + "",
-      title: props.noteTitle,
+      title: NoteContextvalue.noteTitle,
     };
-    props.setNotes([...props.notes, newNote]);
-    props.setNotetitle("");
+    NoteContextvalue.setNotes([...NoteContextvalue.notes, newNote]);
+    NoteContextvalue.setNotetitle("");
   };
 
   const updateHandler = (event) => {
     event.preventDefault();
-    const updatedNoteArray = props.notes.map((note) => {
-      if (note.id === props.update.id) {
-        return { ...note, title: props.noteTitle };
+    const updatedNoteArray = NoteContextvalue.notes.map((note) => {
+      if (note.id === NoteContextvalue.update.id) {
+        return { ...note, title: NoteContextvalue.noteTitle };
       } else {
         return note;
       }
     });
-    props.setNotes(updatedNoteArray);
-    props.setNotetitle("");
-    props.setEdit(false);
+    NoteContextvalue.setNotes(updatedNoteArray);
+    NoteContextvalue.setNotetitle("");
+    NoteContextvalue.setEdit(false);
   };
   return (
     <>
       <form
-        onSubmit={props.edit ? updateHandler : createHandler}
+        onSubmit={NoteContextvalue.edit ? updateHandler : createHandler}
         className="form"
       >
         <input
           type="text"
           className="input-field"
-          value={props.noteTitle}
+          value={NoteContextvalue.noteTitle}
           onChange={(event) => {
-            props.setNotetitle(event.target.value);
+            NoteContextvalue.setNotetitle(event.target.value);
           }}
         />
 
         <button type="submit" className="submit-btn">
-          {props.edit ? "Update Note" : "Add Note"}
+          {NoteContextvalue.edit ? "Update Note" : "Add Note"}
         </button>
       </form>
     </>
