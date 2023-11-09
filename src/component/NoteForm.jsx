@@ -1,50 +1,31 @@
 import React from "react";
+import { useContext } from "react";
+import { NoteContext } from "../context/NoteProvider";
 
-function NoteForm(props) {
-  // create handler
-  const createHandler = (event) => {
-    event.preventDefault();
-    if (!props.noteTitle) {
-      return alert("Please Enter Note Title");
-    }
-    const newNote = {
-      id: Date.now() + "",
-      title: props.noteTitle,
-    };
-    props.setNotes([...props.notes, newNote]);
-    props.setNotetitle("");
-  };
+function NoteForm() {
+  const NoteContextvalue = useContext(NoteContext);
 
-  const updateHandler = (event) => {
-    event.preventDefault();
-    const updatedNoteArray = props.notes.map((note) => {
-      if (note.id === props.update.id) {
-        return { ...note, title: props.noteTitle };
-      } else {
-        return note;
-      }
-    });
-    props.setNotes(updatedNoteArray);
-    props.setNotetitle("");
-    props.setEdit(false);
-  };
   return (
     <>
       <form
-        onSubmit={props.edit ? updateHandler : createHandler}
+        onSubmit={
+          NoteContextvalue.edit
+            ? NoteContextvalue.updateHandler
+            : NoteContextvalue.createHandler
+        }
         className="form"
       >
         <input
           type="text"
           className="input-field"
-          value={props.noteTitle}
+          value={NoteContextvalue.noteTitle}
           onChange={(event) => {
-            props.setNotetitle(event.target.value);
+            NoteContextvalue.setNotetitle(event.target.value);
           }}
         />
 
         <button type="submit" className="submit-btn">
-          {props.edit ? "Update Note" : "Add Note"}
+          {NoteContextvalue.edit ? "Update Note" : "Add Note"}
         </button>
       </form>
     </>

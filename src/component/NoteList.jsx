@@ -1,35 +1,27 @@
 import React from "react";
+import { useContext } from "react";
+import { NoteContext } from "../context/NoteProvider";
 
-function NoteList(props) {
-  //remove button
-  const removeHandler = (noteId) => {
-    const newNotes = props.notes.filter((note) => note.id !== noteId);
-    props.setNotes(newNotes);
-  };
+function NoteList() {
+  const NoteContextvalue = useContext(NoteContext);
 
-  // edit button
-  const editHandler = (note) => {
-    props.setEdit(true);
-    props.setNotetitle(note.title);
-    props.setUpdate(note);
-  };
   return (
     <>
       <ul className="note-list">
-        {props.notes.map((note) => (
+        {NoteContextvalue.notes.map((note) => (
           <li key={note.id} className="note-box">
             <span>{note.title}</span>
             <div className="note-btn">
               <button
                 onClick={() => {
-                  editHandler(note);
+                  NoteContextvalue.editHandler(note);
                 }}
               >
                 Edit
               </button>
               <button
                 onClick={() => {
-                  removeHandler(note.id);
+                  NoteContextvalue.removeHandler(note.id);
                 }}
               >
                 Remove
