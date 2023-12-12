@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { createContext } from "react";
 
@@ -10,6 +10,12 @@ function NoteProvider({ children }) {
   const [edit, setEdit] = useState(false);
   const [update, setUpdate] = useState(null);
   const [noteTitle, setNotetitle] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:4000/notes`)
+      .then((response) => response.json())
+      .then((data) => setNotes(data));
+  }, []);
 
   // handlers
   // create handler
