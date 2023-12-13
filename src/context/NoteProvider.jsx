@@ -28,7 +28,15 @@ function NoteProvider({ children }) {
       id: Date.now() + "",
       title: noteTitle,
     };
-    setNotes([...notes, newNote]);
+    // setNotes([...notes, newNote]);
+    fetch(`http://localhost:4000/notes`, {
+      method: "POST",
+      body: JSON.stringify(newNote),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
     setNotetitle("");
   };
 
