@@ -35,6 +35,10 @@ function NoteProvider({ children }) {
       headers: {
         "Content-type": "application/json",
       },
+    }).then(() => {
+      fetch(`http://localhost:4000/notes`)
+        .then((response) => response.json())
+        .then((data) => setNotes(data));
     });
 
     setNotetitle("");
