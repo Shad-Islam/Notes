@@ -11,10 +11,14 @@ function NoteProvider({ children }) {
   const [update, setUpdate] = useState(null);
   const [noteTitle, setNotetitle] = useState("");
 
-  useEffect(() => {
+  const getAllNotes = () => {
     fetch(`http://localhost:4000/notes`)
       .then((response) => response.json())
       .then((data) => setNotes(data));
+  };
+
+  useEffect(() => {
+    getAllNotes();
   }, []);
 
   // handlers
@@ -36,9 +40,7 @@ function NoteProvider({ children }) {
         "Content-type": "application/json",
       },
     }).then(() => {
-      fetch(`http://localhost:4000/notes`)
-        .then((response) => response.json())
-        .then((data) => setNotes(data));
+      getAllNotes();
     });
 
     setNotetitle("");
