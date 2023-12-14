@@ -63,8 +63,13 @@ function NoteProvider({ children }) {
 
   //remove button
   const removeHandler = (noteId) => {
-    const newNotes = notes.filter((note) => note.id !== noteId);
-    setNotes(newNotes);
+    // const newNotes = notes.filter((note) => note.id !== noteId);
+    // setNotes(newNotes);
+    fetch(`http://localhost:4000/notes/${noteId}`, {
+      method: "DELETE",
+    }).then(() => {
+      getAllNotes();
+    });
   };
 
   // edit button
