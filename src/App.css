@@ -69,10 +69,13 @@ body{
 }
 
 .input-field{
+  border:0;
   outline: 0;
+  color: #ffffff;
   border-radius: 5px;
   padding: 15px 30px 15px 5px;
-  border: 2px solid #282c34;
+  /* border: 2px solid #282c34; */
+  background-color: #CA6C43;
 }
 
 .submit-btn{
@@ -104,13 +107,15 @@ body{
   width: 100%;
   padding: 20px;
   outline: none;
-  color: #000;
+  /* color: #000; */
+  color: #ffffff;
   margin: 20px 0;
   font-size: 20px;
   list-style: none;
   max-width: 500px;
   min-height: 150px;
-  background: #fff;
+  /* background: #fff; */
+  background: #5B6D92;
   position: relative;
   border-radius: 9px;
   letter-spacing: 1px;
@@ -126,10 +131,13 @@ body{
   border: none;
   cursor: pointer;
   background: none;
-  color:darkgray;
+  /* color:darkgray; */
+  color: #000;
   transition: all linear 0.5s;
 }
 
 .note-btn button:hover{ 
-  color: #000;
+  /* color: #000; */
+  color: #ffffff;
+
 }
